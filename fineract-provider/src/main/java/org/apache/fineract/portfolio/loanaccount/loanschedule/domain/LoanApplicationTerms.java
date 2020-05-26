@@ -1219,7 +1219,7 @@ public final class LoanApplicationTerms {
             if (this.installmentAmountInMultiplesOf != null) {
                 installmentAmount = Money.roundToMultiplesOf(installmentAmount, this.installmentAmountInMultiplesOf);
             }
-            setFixedEmiAmount(BigDecimal.valueOf(installmentAmount));
+            setFixedEmiAmount(BigDecimal.valueOf(0.0));
         }
         return getFixedEmiAmount().doubleValue();
     }

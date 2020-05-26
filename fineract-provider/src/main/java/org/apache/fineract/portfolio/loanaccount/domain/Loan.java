@@ -452,7 +452,7 @@ public class Loan extends AbstractPersistableCustom<Long> {
             final Boolean isFloatingInterestRate, final BigDecimal interestRateDifferential) {
 
         this.loanRepaymentScheduleDetail = loanRepaymentScheduleDetail;
-        this.loanRepaymentScheduleDetail.validateRepaymentPeriodWithGraceSettings();
+        //this.loanRepaymentScheduleDetail.validateRepaymentPeriodWithGraceSettings();
 
         this.isFloatingInterestRate = isFloatingInterestRate;
         this.interestRateDifferential = interestRateDifferential;

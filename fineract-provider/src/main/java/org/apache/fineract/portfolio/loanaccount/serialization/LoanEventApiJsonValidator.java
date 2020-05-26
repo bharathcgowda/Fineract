@@ -170,7 +170,7 @@ public final class LoanEventApiJsonValidator {
         baseDataValidator.reset().parameter("transactionDate").value(transactionDate).notNull();
 
         final BigDecimal transactionAmount = this.fromApiJsonHelper.extractBigDecimalWithLocaleNamed("transactionAmount", element);
-        baseDataValidator.reset().parameter("transactionAmount").value(transactionAmount).notNull().positiveAmount();
+        //baseDataValidator.reset().parameter("transactionAmount").value(transactionAmount).notNull().positiveAmount();
 
         final String note = this.fromApiJsonHelper.extractStringNamed("note", element);
         baseDataValidator.reset().parameter("note").value(note).notExceedingLengthOf(1000);
