@@ -74,6 +74,9 @@ group = 'org.apache.fineract'
 buildDir = new File(rootProject.projectDir, "../build")
 repositories {
 	jcenter()
+	maven {
+		url "http://nexus.pentaho.org/content/repositories/omni/"
+	}
 	// mavenLocal() // useful for local dev using MariaDB4j SNAPSHOTs (not needed for real-world non-SNAPHOT builds)
 }
 
@@ -85,6 +88,7 @@ openjpa {
 }
 
 rat {
+  failOnError = false
   xmlOutput = false
   htmlOutput = false
   plainOutput = true
@@ -244,6 +248,11 @@ task dist(type:Zip){
         include '**/*'
 		into('apps')
 	}
+    from('src/main/pentahoReports/') {
+        fileMode = 0755
+        include '*'
+        into('pentahoReports')
+    }
     from('../api-docs/') {
         fileMode = 0755
         include '*'
@@ -263,6 +272,18 @@ task dist(type:Zip){
     from war.outputs.files
     into(baseName + '-' + version)
 }
+task deployPentahoReports() {
+    def pentahoReportDir = System.properties['user.home'] + System.properties['file.separator'] + '.fineract' + System.properties['file.separator'] + 'pentahoReports'
+    copy {
+        from "src/main/pentahoReports"
+        into pentahoReportDir
+    }
+
+    doLast {
+        println ':deployPentahoReports - moving pentaho reports under: ' + pentahoReportDir
+    }
+}
+
 
 compileJava{
     dependsOn rat

@@ -58,7 +58,8 @@
 										  org.apache.fineract.useradministration.*,
 										  org.apache.fineract.batch,
 										  org.apache.fineract.adhocquery.*,
-										  org.apache.fineract.infrastructure.campaigns.**">
+										  org.apache.fineract.infrastructure.campaigns.**
+										  org.mifosplatform.infrastructure.report.service">
 		<context:exclude-filter expression="org.springframework.stereotype.Controller"
 			type="annotation" />
 
